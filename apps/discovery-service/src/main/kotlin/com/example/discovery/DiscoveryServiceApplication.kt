@@ -1,4 +1,4 @@
-package com.example.ecommerce
+package com.example.discovery
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 
 @SpringBootApplication
 @EnableEurekaServer
-class EcommerceApplication
+class DiscoveryServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<EcommerceApplication>(*args)
+    runApplication<DiscoveryServiceApplication>(*args)
 }

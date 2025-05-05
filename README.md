@@ -15,3 +15,8 @@ practice MSA Architecture
 - 언어: Kotlin
 - JDK Version: 21
 - 스프링 부트 Version: 3.4.5 
+
+## 브랜치 및 커밋 룰
+1) 이슈 생성
+2) 이슈에 따른 feature(refactor, test ..) branch 생성(ex. feature/101)
+3) 커밋 진행 시 커밋 타이틀에 issue number 할당(ex. feat: xxx 구현 (#101))

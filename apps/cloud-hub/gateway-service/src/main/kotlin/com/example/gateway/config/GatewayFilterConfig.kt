@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration
 class GatewayFilterConfig {
     @Bean
     fun gatewayRoute(builder: RouteLocatorBuilder): RouteLocator {
-        return builder.routes().route("first-service") { r ->
-            r.path("/first-service/**")
+        return builder.routes().route("second-service") { r ->
+            r.path("/second-service/**")
                 .filters {
                     f -> f
-                        .addRequestHeader("first-request", "first-request-header")
-                        .addResponseHeader("first-response", "first-response-header")
+                        .addRequestHeader("second-request", "second-request-header")
+                        .addResponseHeader("second-response", "second-response-header")
                 }
-                .uri("http://localhost:8081")
+                .uri("http://localhost:8082")
         }.build()
     }
 }

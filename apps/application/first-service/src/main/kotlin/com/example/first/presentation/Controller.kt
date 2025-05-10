@@ -15,9 +15,7 @@ class Controller {
 
     @GetMapping("/message")
     fun checkFirstRequestHeader(
-        @RequestHeader(value = "first-request") header: String
     ): String {
-        println("first-request : ${header}")
         return "OK"
     }
 }

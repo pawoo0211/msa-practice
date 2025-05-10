@@ -23,7 +23,12 @@ spring:
           predicates:
             - Path=/first-service/**
           filters:
-            - GlobalFilter
+
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway Logging Filter
+                preLogger: true
+                postLogger: true
         - id: second-service
           uri: http://localhost:8082/
           predicates:

@@ -1,8 +1,9 @@
 package com.example.user.presentation
 
-import com.example.user.application.dto.UserRequest
+import com.example.user.application.dto.CreateUserRequest
+import com.example.user.application.dto.CreateUserResponse
+import com.example.user.application.mapper.UserMapper
 import com.example.user.application.service.UserService
-import com.example.user.application.service.UserServiceImpl
 import org.springframework.core.env.Environment
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class UserController(
     private val environment: Environment,
+    private val userMapper: UserMapper,
     private val userService: UserService
 ) {
     private val healthCheckMessage = "It`s Working in User Service"
 
     @RequestMapping("/health_check")
-    fun status() : String {
+    fun status(): String {
         return healthCheckMessage
     }
 
@@ -30,13 +32,13 @@ class UserController(
 
     @RequestMapping("/user")
     fun createUser(
-        @RequestBody request: UserRequest
-    ): ResponseEntity<String> {
-        userService.createUser(request)
+        @RequestBody createUserRequest: CreateUserRequest
+    ): ResponseEntity<CreateUserResponse> {
+        val createUserCommand = userMapper.toCreateUserCommand(createUserRequest)
+        val createUserResponse = userService.createUser(createUserCommand)
 
-        println("userRequest: $request")
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body("UserController createUser method is called")
+            .body(createUserResponse)
     }
 }

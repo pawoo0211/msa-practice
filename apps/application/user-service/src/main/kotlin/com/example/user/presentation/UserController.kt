@@ -7,6 +7,7 @@ import com.example.user.application.service.UserService
 import org.springframework.core.env.Environment
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val environment: Environment,
     private val userMapper: UserMapper,
-    private val userService: UserService
+    private val userService: UserService,
+    private val passwordEncoder: BCryptPasswordEncoder
 ) {
     private val healthCheckMessage = "It`s Working in User Service"
 

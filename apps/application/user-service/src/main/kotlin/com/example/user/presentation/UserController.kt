@@ -1,25 +1,21 @@
 package com.example.user.presentation
 
-import com.example.user.application.dto.CreateUserRequest
-import com.example.user.application.dto.CreateUserResponse
+import com.example.user.application.dto.request.CreateUserRequest
+import com.example.user.application.dto.response.CreateUserResponse
+import com.example.user.application.dto.response.FindUserResponse
 import com.example.user.application.mapper.UserMapper
 import com.example.user.application.service.UserService
 import org.springframework.core.env.Environment
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/user-service")
 class UserController(
     private val environment: Environment,
     private val userMapper: UserMapper,
-    private val userService: UserService,
-    private val passwordEncoder: BCryptPasswordEncoder
+    private val userService: UserService
 ) {
     private val healthCheckMessage = "It`s Working in User Service"
 
@@ -34,7 +30,7 @@ class UserController(
         return greetingMessage
     }
 
-    @PostMapping
+    @PostMapping("/user")
     fun createUser(
         @RequestBody createUserRequest: CreateUserRequest
     ): ResponseEntity<CreateUserResponse> {
@@ -44,5 +40,25 @@ class UserController(
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(createUserResponse)
+    }
+
+    @GetMapping("/{userId}")
+    fun findUser(
+        @PathVariable(name = "userId") userId: String
+    ): ResponseEntity<FindUserResponse> {
+        val findUserResponse = userService.findUserByEmail(userId)
+
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(findUserResponse)
+    }
+
+    @GetMapping("/users")
+    fun findUser(): ResponseEntity<List<FindUserResponse>> {
+        val findUserResponseList = userService.findAllUser()
+
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(findUserResponseList)
     }
 }

@@ -15,7 +15,7 @@ class WebSecurityConfig {
         return http
             .csrf { it.disable() }
             .authorizeHttpRequests {
-                it.requestMatchers("/user/**")
+                it.requestMatchers("/user-service/**", "/h2-console/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated()

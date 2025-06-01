@@ -1,6 +1,6 @@
 package com.example.user.application.mapper
 
-import com.example.user.application.dto.CreateUserRequest
+import com.example.user.application.dto.request.CreateUserRequest
 import com.example.user.domain.CreateUserCommand
 import com.example.user.domain.UserEntity
 import org.modelmapper.ModelMapper

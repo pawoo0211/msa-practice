@@ -38,3 +38,13 @@ spring:
                 baseMessage: Spring Cloud Gateway Logging Filter
                 preLogger: true
                 postLogger: true
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway Logging Filter
+                preLogger: true
+                postLogger: true

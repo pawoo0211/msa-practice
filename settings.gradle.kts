@@ -12,3 +12,5 @@ include("apps:application:second-service")
 findProject(":apps:application:second-service")?.name = "second-service"
 include("apps:application:catalog-service")
 findProject(":apps:application:catalog-service")?.name = "catalog-service"
+include("apps:application:order-service")
+findProject(":apps:application:order-service")?.name = "order-service"

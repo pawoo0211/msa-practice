@@ -14,3 +14,5 @@ include("apps:application:catalog-service")
 findProject(":apps:application:catalog-service")?.name = "catalog-service"
 include("apps:application:order-service")
 findProject(":apps:application:order-service")?.name = "order-service"
+include("apps:cloud-hub:config-service")
+findProject(":apps:cloud-hub:config-service")?.name = "config-service"

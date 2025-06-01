@@ -1,4 +1,4 @@
-package com.example.user.application.dto
+package com.example.user.application.dto.response
 
 data class CreateUserResponse(
     val userId: Long

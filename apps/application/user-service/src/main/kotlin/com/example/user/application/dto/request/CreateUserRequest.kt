@@ -1,4 +1,4 @@
-package com.example.user.application.dto
+package com.example.user.application.dto.request
 
 data class CreateUserRequest(
     val email: String,

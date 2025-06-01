@@ -18,20 +18,23 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        - id: first-service
-          uri: lb://FIRST-SERVICE
+        - id: user-service
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/first-service/**
+            - Path=/user-service/**
           filters:
             - name: LoggingFilter
               args:
                 baseMessage: Spring Cloud Gateway Logging Filter
                 preLogger: true
                 postLogger: true
-        - id: second-service
-          uri: lb://SECOND-SERVICE
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
           predicates:
-            - Path=/second-service/**
-#          filters:
-#            - AddRequestHeader=second-request, second-request-header
-#            - AddResponseHeader=second-response, second-response-header
+            - Path=/catalog-service/**
+          filters:
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway Logging Filter
+                preLogger: true
+                postLogger: true

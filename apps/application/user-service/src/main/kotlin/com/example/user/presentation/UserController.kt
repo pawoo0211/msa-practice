@@ -17,11 +17,9 @@ class UserController(
     private val userMapper: UserMapper,
     private val userService: UserService
 ) {
-    private val healthCheckMessage = "It`s Working in User Service"
-
     @RequestMapping("/health_check")
     fun status(): String {
-        return healthCheckMessage
+        return "It`s Working in User Service"
     }
 
     @RequestMapping("/welcome")
@@ -54,7 +52,7 @@ class UserController(
     }
 
     @GetMapping("/users")
-    fun findUser(): ResponseEntity<List<FindUserResponse>> {
+    fun findAllUser(): ResponseEntity<List<FindUserResponse>> {
         val findUserResponseList = userService.findAllUser()
 
         return ResponseEntity

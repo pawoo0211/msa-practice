@@ -26,18 +26,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.cloud:spring-cloud-config-server")
     implementation("org.springframework.cloud:spring-cloud-starter-bus-amqp")
-    implementation("org.modelmapper:modelmapper:3.0.0")
-
-    implementation("com.h2database:h2:2.3.232")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 }
 
 dependencyManagement {

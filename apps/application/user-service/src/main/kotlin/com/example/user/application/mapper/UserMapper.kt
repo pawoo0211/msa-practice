@@ -6,12 +6,11 @@ import com.example.user.domain.UserEntity
 import org.modelmapper.ModelMapper
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Component
+import kotlin.io.encoding.Base64
 
 @Component
 class UserMapper(
-    private val passwordEncoder: BCryptPasswordEncoder,
     private val modelMapper: ModelMapper
 ) {
     fun toCreateUserCommand(
@@ -19,7 +18,7 @@ class UserMapper(
     ): CreateUserCommand {
         return CreateUserCommand(
             email = createUserRequest.email,
-            encryptedPassword = passwordEncoder.encode(createUserRequest.password),
+            encryptedPassword = createUserRequest.password,
             name = createUserRequest.name
         )
     }

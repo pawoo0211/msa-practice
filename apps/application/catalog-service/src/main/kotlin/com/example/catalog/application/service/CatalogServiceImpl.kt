@@ -22,11 +22,11 @@ class CatalogServiceImpl(
     }
 
     override fun updateQuantity(kafkaMessage: String) {
-        var map = mutableMapOf<Any, Any>()
+        var map: Map<String, Any> = mutableMapOf()
         val mapper = ObjectMapper()
 
         try {
-            val map: Map<String, Any> = mapper.readValue(kafkaMessage, object : TypeReference<Map<String, Any>>() {})
+            map = mapper.readValue(kafkaMessage, object : TypeReference<Map<String, Any>>() {})
         } catch (e: Exception) {
             e.printStackTrace()
         }

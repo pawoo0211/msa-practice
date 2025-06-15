@@ -4,6 +4,7 @@ import com.example.catalog.application.dto.response.FindCatalogResponse
 import com.example.catalog.domain.CatalogRepository
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Service
 
 @Service
@@ -21,6 +22,7 @@ class CatalogServiceImpl(
         }
     }
 
+    @KafkaListener(topics = arrayOf("example-catalog-topic"))
     override fun updateQuantity(kafkaMessage: String) {
         var map: Map<String, Any> = mutableMapOf()
         val mapper = ObjectMapper()
